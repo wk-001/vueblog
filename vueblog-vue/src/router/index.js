@@ -25,7 +25,10 @@ Vue.use(VueRouter)
   {
     path: '/blog/add',
     name: 'BlogEdit',
-    component: BlogEdit
+    component: BlogEdit,
+    meta:{
+      requireAuth:true    //登录后才能跳转到该路由
+    }
   },
   {
     path: '/blog/:blogId',
@@ -35,7 +38,10 @@ Vue.use(VueRouter)
   {
     path: '/blog/edit/:blogId',
     name: 'BlogEdit',
-    component: BlogEdit
+    component: BlogEdit,
+    meta:{
+      requireAuth:true
+    }
   },
 
 ]

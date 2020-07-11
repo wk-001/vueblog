@@ -10,6 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 //导入axios
 import axios from "axios";
 import "./request/axios"
+import "./request/permission"
 
 Vue.config.productionTip = false
 //设置全局引用

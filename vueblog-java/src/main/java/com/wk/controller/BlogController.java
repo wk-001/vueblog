@@ -24,8 +24,8 @@ public class BlogController {
     private BlogService  blogService;
 
     @GetMapping("list")
-    public Result<IPage> list(@RequestParam(defaultValue = "1") Integer currentPage){
-        Page page = new Page(currentPage,5);
+    public Result<IPage<Blog>> list(@RequestParam(defaultValue = "1") Integer currentPage){
+        Page<Blog> page = new Page<>(currentPage,5);
         return Result.ok(blogService.page(page,new QueryWrapper<Blog>().orderByDesc("created")));
     }
 
@@ -35,7 +35,7 @@ public class BlogController {
     }
 
     @RequiresAuthentication
-    @PostMapping("edit")
+    @PostMapping
     public Result<Void> edit(@Validated @RequestBody Blog blog){
 
         Blog temp = null;

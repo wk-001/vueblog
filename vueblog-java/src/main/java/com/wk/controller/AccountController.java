@@ -65,7 +65,7 @@ public class AccountController {
 	 * 退出登录
 	 */
 	@RequiresAuthentication
-	@GetMapping
+	@GetMapping("logout")
 	public Result<Void> logout(){
 		SecurityUtils.getSubject().logout();
 		return Result.ok();
