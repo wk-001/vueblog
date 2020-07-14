@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Result<T> implements Serializable {
 
 	/**
-	 * 响应状态码 200正常 非200异常
+	 * 响应状态码
 	 */
 	private Integer code;
 
@@ -24,12 +24,27 @@ public class Result<T> implements Serializable {
 	 */
 	private T data;
 
+	/**
+	 * 响应成功状态码
+	 */
+	private static final int SUCCESS_CODE = 200;
+
+	/**
+	 * 响应成功信息
+	 */
+	private static final String SUCCESS_MESSAGE = "操作成功";
+
+	/**
+	 * 响应失败状态码
+	 */
+	private static final int FAIL_CODE = 400;
+
 	public static<T> Result<T> ok() {
-		return ok(200, "操作成功", null);
+		return ok(SUCCESS_CODE, SUCCESS_MESSAGE, null);
 	}
 
 	public static<T> Result<T> ok(T data) {
-		return ok(200, "操作成功", data);
+		return ok(SUCCESS_CODE, SUCCESS_MESSAGE, data);
 	}
 
 	public static<T> Result<T> ok(int code, String msg, T data) {
@@ -41,11 +56,11 @@ public class Result<T> implements Serializable {
 	}
 
 	public static<T> Result<T> fail(String msg) {
-		return fail(400, msg, null);
+		return fail(FAIL_CODE, msg, null);
 	}
 
 	public static<T> Result<T> fail(String msg, T data) {
-		return fail(400, msg, data);
+		return fail(FAIL_CODE, msg, data);
 	}
 
 	public static<T> Result<T> fail(int code, String msg, T data) {
